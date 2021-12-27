@@ -47,28 +47,32 @@ export default function CardTodo({todo, todos, setTodos}) {
 
     };
 
-    const handleDelete = () => {
-        
-        // ... submit to API or something
-        setTodos(todos.filter((el) => el.id !== todo.id));
+    const affichageImage = () => {
+      var img = document.createElement("img");
+      img.src = "1.png";
 
+      //var div = document.getElementById("case1");
+      //div.appendChild(img);
+    
+      return document.getElementById("case1").appendChild(img);
     };
 
     return(
 
-        <Card className={classes.root} variant="outlined">
+        <Card className={classes.root} variant="outlined" onClick={handleDone}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary" gutterBottom>
-            <b><span className={`"title" ${todo.done ? "completed" : ''}`}> {todo.title} </span></b>
+            <b><span className={`"title" ${todo.done ? "completed" : ''}`}> {todo.title}</span></b>
           </Typography>
           <Typography variant="body2" component="p">
             {todo.description}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" onClick={handleDone}>Done</Button>
-          <Button size="small" onClick={handleDelete}>Delete</Button>
+
         </CardActions>
+            <div id ="case1"> {todo.done ? {affichageImage} : ''} </div>
+
         </Card>
 
         // <div>

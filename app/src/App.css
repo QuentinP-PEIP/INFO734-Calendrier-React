@@ -3,5 +3,6 @@
 }
 
 .completed {
-    text-decoration-line: line-through
+    text-decoration-line: line-through;
+    background-color: red;
 }
