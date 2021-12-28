@@ -2,6 +2,8 @@ import React from 'react';
 
 import CardTodo from "./card";
 
+import '../style/list.css';
+
 
 export default function List({todos, setTodos}) {
 
@@ -9,9 +11,11 @@ export default function List({todos, setTodos}) {
     if (todos.length > 0) 
         console.log(todos[0].title);
 
+    
+
+  /*
   return (
       <div>
-          <h2>Mes Todos</h2>
           <ul>
           {todos.map((value, index) => {
             return <CardTodo key={index} todo={value} todos={todos} setTodos={setTodos}/>
@@ -20,4 +24,13 @@ export default function List({todos, setTodos}) {
           
       </div>
   )
+  */
+
+  return (
+    <div class = 'Card'>  
+        {todos.map((value, index) => {
+          return <CardTodo key={index} todo={value} todos={todos} setTodos={setTodos}/>
+         })}
+    </div>
+)
 }

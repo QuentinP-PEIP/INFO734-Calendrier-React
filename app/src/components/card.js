@@ -59,13 +59,14 @@ export default function CardTodo({todo, todos, setTodos}) {
             return item;
         }));
     };
-
+    /*
     const handleDelete = () => {
         
         // ... submit to API or something
         setTodos(todos.filter((el) => el.id !== todo.id));
 
     };
+    */
 
     return(
 
@@ -80,7 +81,6 @@ export default function CardTodo({todo, todos, setTodos}) {
         </CardContent>
         <CardActions>
           <Button size="small" onClick={handleDone}>Ouvrir</Button>
-          <Button size="small" onClick={handleDelete}>Delete</Button>
         </CardActions>
         </Card>
 
