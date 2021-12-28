@@ -31,20 +31,33 @@ const useStyles = makeStyles({
 export default function CardTodo({todo, todos, setTodos}) {
 
     const classes = useStyles();
+    const date = new Date(Date.now());
+    const month = parseInt(date.getMonth()) + 1;
+    const now = date.getDate().toString();
+    let day = "";
+
+    if (now.length < 2){
+      day = "0" + now;
+    }
+    else{
+      day = now;
+    }
+
+    const datea = date.getFullYear() + "-" + month.toString() + "-" + day;
 
     const handleDone = () => {
         
         // ... submit to API or something
         setTodos(todos.map((item) => {
             if (item.id === todo.id) {
-                return { 
-                    ...item, done : !item.done
-                }
+              if (avant_date(item.date)){
+                  return { 
+                      ...item, ouvert : !item.ouvert
+                  }
+              }
             }
-
             return item;
         }));
-
     };
 
     const handleDelete = () => {
@@ -59,14 +72,14 @@ export default function CardTodo({todo, todos, setTodos}) {
         <Card className={classes.root} variant="outlined">
         <CardContent>
           <Typography className={classes.title} color="textSecondary" gutterBottom>
-            <b><span className={`"title" ${todo.done ? "completed" : ''}`}> {todo.title} </span></b>
+            <b><span className={`"title" ${todo.ouvert ? "completed" : ''}`}> {todo.title} </span></b>
           </Typography>
           <Typography variant="body2" component="p">
-            {todo.description}
+            {todo.date}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" onClick={handleDone}>Done</Button>
+          <Button size="small" onClick={handleDone}>Ouvrir</Button>
           <Button size="small" onClick={handleDelete}>Delete</Button>
         </CardActions>
         </Card>
@@ -76,4 +89,27 @@ export default function CardTodo({todo, todos, setTodos}) {
         // </div>
         
     );
+    
+    function avant_date(date_objet){ //Renvoie true si date_objet est avant la date actuelle sinon renvoie false
+      const date = new Date(Date.now());
+      const month = parseInt(date.getMonth()) + 1;
+      const now = date.getDate().toString();
+      let day = "";
+
+      if (now.length < 2){
+        day = "0" + now;
+      }
+      else{
+        day = now;
+      }
+
+      const datea = date.getFullYear() + "-" + month.toString() + "-" + day;
+
+      if (date_objet <= datea){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
 }
