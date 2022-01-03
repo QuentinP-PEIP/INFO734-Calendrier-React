@@ -20,7 +20,7 @@ function App() {
   if (todos.length < 24){
       addTodos([
       ...todos,
-      {title:"Jour " + (todos.length + 1), date: "2021-12-" + (todos.length + 1), ouvert : false, id: Math.ceil(Math.random() * 10000)}
+      {title:"Jour " + (todos.length + 1), date: "2022-1-" + (todos.length + 1), ouvert : false, id: Math.ceil(Math.random() * 10000)}
       ]);
   }
   /*

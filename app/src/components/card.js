@@ -71,7 +71,7 @@ export default function CardTodo({todo, todos, setTodos}) {
     return(
 
         <Card className={classes.root} variant="outlined">
-        <CardContent>
+        <CardContent onClick={handleDone}>
           <Typography className={classes.title} color="textSecondary" gutterBottom>
             <b><span className={`"title" ${todo.ouvert ? "completed" : ''}`}> {todo.title} </span></b>
           </Typography>
@@ -79,9 +79,6 @@ export default function CardTodo({todo, todos, setTodos}) {
             {todo.date}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small" onClick={handleDone}>Ouvrir</Button>
-        </CardActions>
         </Card>
 
         // <div>
@@ -93,23 +90,9 @@ export default function CardTodo({todo, todos, setTodos}) {
     function avant_date(date_objet){ //Renvoie true si date_objet est avant la date actuelle sinon renvoie false
       const date = new Date(Date.now());
       const month = parseInt(date.getMonth()) + 1;
-      const now = date.getDate().toString();
-      let day = "";
 
-      if (now.length < 2){
-        day = "0" + now;
-      }
-      else{
-        day = now;
-      }
+      const datea = date.getFullYear() + "-" + month.toString() + "-" + date.getDate();
 
-      const datea = date.getFullYear() + "-" + month.toString() + "-" + day;
-
-      if (date_objet <= datea){
-        return true;
-      }
-      else{
-        return false;
-      }
+      return (date_objet <= datea);
     }
 }
