@@ -27,7 +27,7 @@ export default function List({todos, setTodos}) {
   */
 
   return (
-    <div class = 'Card'>  
+    <div className = 'Card'>  
         {todos.map((value, index) => {
           return <CardTodo key={index} todo={value} todos={todos} setTodos={setTodos}/>
          })}
